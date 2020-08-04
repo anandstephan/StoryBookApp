@@ -21,6 +21,8 @@ const app = express();
 //for consoling
 app.use(morgan('dev'))
 
+//Handlebars Helpers
+const {formatDate} = require('./helpers/hbs')
 
 //Handlebars
 app.engine('.hbs',exphbs({extname:'hbs'}));
@@ -44,6 +46,8 @@ app.use(express.static(path.join(__dirname,'public')))
 //Routes
 app.use('/',require('./routes/index'))
 app.use('/auth',require('./routes/auth'));
+app.use('/stories',require('./routes/stories'));
+
 
 const PORT = process.env.PORT || 5000; 
 
